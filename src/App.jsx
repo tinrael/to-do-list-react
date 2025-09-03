@@ -1,6 +1,9 @@
 import Task from "./components/Task";
 
 function App(props) {
+  const tasks = props.tasks?.map((task) => (
+    <Task id={task.id} name={task.name} checked={task.checked} />
+  ));
   return (
     <div className="todoapp stack-large">
       <h1>TodoMatic</h1>
@@ -43,9 +46,7 @@ function App(props) {
         role="list"
         className="todo-list stack-large stack-exception"
         aria-labelledby="list-heading">
-        <Task name="Eat" id="task-0" checked />
-        <Task name="Sleep" id="task-1" />
-        <Task name="Repeat" id="task-2" />
+        {tasks}
       </ul>
     </div>
   );
