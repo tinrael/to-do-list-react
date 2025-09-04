@@ -1,7 +1,7 @@
-function Form() {
+function Form(props) {
   function handleSubmit(event) {
     event.preventDefault();
-    alert("handleSubmit");
+    props.addTask("Task");
   }
     return (
         <form onSubmit={handleSubmit}>
