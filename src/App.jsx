@@ -13,12 +13,23 @@ function App(props) {
     setTasks([...tasks, task]);
   }
 
+  function toggleTask(id) {
+    setTasks(tasks.map((task) => {
+      if (id === task.id) {
+        return { ...task, checked: !task.checked };
+      } else {
+        return task;
+      }
+    }));
+  }
+
   const taskList = tasks?.map((task) => (
     <Task 
       id={task.id} 
       name={task.name} 
       checked={task.checked} 
       key={task.id} 
+      toggleTask={toggleTask}
     />
   ));
 
