@@ -27,6 +27,16 @@ function App(props) {
     setTasks(tasks.filter((task) => id !== task.id));
   }
 
+  function editTask(id, name) {
+    setTasks(tasks.map((task) => {
+      if (id === task.id) {
+        return { ...task, name };
+      } else {
+        return task;
+      }
+    }));
+  }
+
   const taskList = tasks?.map((task) => (
     <Task 
       id={task.id} 
@@ -34,7 +44,8 @@ function App(props) {
       checked={task.checked} 
       key={task.id} 
       toggleTask={toggleTask} 
-      deleteTask={deleteTask}
+      deleteTask={deleteTask} 
+      editTask={editTask}
     />
   ));
 
