@@ -23,13 +23,18 @@ function App(props) {
     }));
   }
 
+  function deleteTask(id) {
+    setTasks(tasks.filter((task) => id !== task.id));
+  }
+
   const taskList = tasks?.map((task) => (
     <Task 
       id={task.id} 
       name={task.name} 
       checked={task.checked} 
       key={task.id} 
-      toggleTask={toggleTask}
+      toggleTask={toggleTask} 
+      deleteTask={deleteTask}
     />
   ));
 
