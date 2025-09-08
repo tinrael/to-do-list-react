@@ -5,8 +5,17 @@ import FilterButton from "./components/FilterButton";
 import Form from "./components/Form";
 import Task from "./components/Task";
 
+const FILTER_MAP = {
+  All: () => true,
+  Active: (task) => !task.checked,
+  Completed: (task) => task.checked,
+};
+
+const FILTER_NAMES = Object.keys(FILTER_MAP);
+
 function App(props) {
   const [tasks, setTasks] = useState(props.tasks);
+  const [filter, setFilter] = useState("All");
 
   function addTask(name) {
     const task = { id: `todo-${nanoid()}`, name, checked: false };
