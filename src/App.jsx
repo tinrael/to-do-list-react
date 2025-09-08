@@ -58,6 +58,10 @@ function App(props) {
     />
   ));
 
+  const filterList = FILTER_NAMES.map((name) => (
+    <FilterButton key={name} name={name} />
+  ));
+
   const tasksNoun = taskList.length !== 1 ? "tasks" : "task";
   const headingText = `${taskList.length} ${tasksNoun} remaining`;
 
@@ -65,11 +69,7 @@ function App(props) {
     <div className="todoapp stack-large">
       <h1>TodoMatic</h1>
       <Form addTask={addTask} />
-      <div className="filters btn-group stack-exception">
-        <FilterButton />
-        <FilterButton />
-        <FilterButton />
-      </div>
+      <div className="filters btn-group stack-exception">{filterList}</div>
       <h2 id="list-heading">{headingText}</h2>
       <ul
         role="list"
